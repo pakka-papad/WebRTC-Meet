@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WebRTC Meet</string>
+    <string name="logo">logo</string>
+    <string name="anonymous_sign_in_logo">anonymous_sign_in_logo</string>
+    <string name="google_sign_in_logo">google_sign_in_logo</string>
+    <string name="sign_in_anonymously">Sign In Anonymously</string>
+    <string name="sign_in_with_google">Sign In With Google</string>
+</resources>
