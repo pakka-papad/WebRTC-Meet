@@ -10,8 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.lifecycleScope
+import com.example.webrtcmeet.Constants.DISPLAY_NAME
 import com.example.webrtcmeet.Constants.ERROR_TEXT
-import com.example.webrtcmeet.viewmodels.SharedViewModel
+import com.example.webrtcmeet.Constants.PHOTO_URL
+import com.example.webrtcmeet.Constants.UID
+import com.example.webrtcmeet.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -34,7 +37,7 @@ class SignInActivity : AppCompatActivity() {
     private lateinit var anonymousSignInBtn: ConstraintLayout
     private lateinit var progressBar: ProgressBar
     private lateinit var loadingCard: CardView
-    private lateinit var viewModel: SharedViewModel
+    private lateinit var viewModel: SignInViewModel
     private val getContent =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
@@ -43,10 +46,9 @@ class SignInActivity : AppCompatActivity() {
                     val account = task.getResult(ApiException::class.java)
                     signInWithGoogle(account.idToken!!)
                 } catch (e: Exception) {
-                showError()
+                    showError()
                 }
-            }
-            else{
+            } else {
                 showError()
             }
         }
@@ -59,7 +61,7 @@ class SignInActivity : AppCompatActivity() {
         anonymousSignInBtn = findViewById(R.id.anonymous_sign_in_btn)
         progressBar = findViewById(R.id.progress_bar)
         loadingCard = findViewById(R.id.loading_card)
-        viewModel = SharedViewModel()
+        viewModel = SignInViewModel()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -89,17 +91,16 @@ class SignInActivity : AppCompatActivity() {
         googleSignInBtn.isActivated = false
         anonymousSignInBtn.isActivated = false
         val credential = GoogleAuthProvider.getCredential(idToken, null)
-            auth.signInWithCredential(credential).addOnSuccessListener {
-                updateUI(it.user)
-            }
+        auth.signInWithCredential(credential).addOnSuccessListener {
+            updateUI(it.user)
+        }
     }
 
     private fun updateUI(firebaseUser: FirebaseUser?) {
         if (firebaseUser != null) {
             viewModel.addUser(firebaseUser)
             launchMainActivity()
-        }
-        else{
+        } else {
             loadingCard.visibility = View.GONE
             progressBar.visibility = View.GONE
             googleSignInBtn.isActivated = true
@@ -115,7 +116,7 @@ class SignInActivity : AppCompatActivity() {
         ).show()
     }
 
-    private fun fetchRandomUser(){
+    private fun fetchRandomUser() {
         loadingCard.visibility = View.VISIBLE
         progressBar.visibility = View.VISIBLE
         googleSignInBtn.isActivated = false
@@ -124,11 +125,14 @@ class SignInActivity : AppCompatActivity() {
         launchMainActivity()
     }
 
-    private fun launchMainActivity(){
+    private fun launchMainActivity() {
         lifecycleScope.launch {
             viewModel.isUserNULL.collectLatest {
-                if(!it){
-                    val intent = Intent(this@SignInActivity,MainActivity::class.java)
+                if (!it) {
+                    val intent = Intent(this@SignInActivity, MainActivity::class.java)
+                    intent.putExtra(DISPLAY_NAME,viewModel.user!!.displayName)
+                    intent.putExtra(PHOTO_URL,viewModel.user!!.photoUrl)
+                    intent.putExtra(UID,viewModel.user!!.uid)
                     startActivity(intent)
                     finish()
                 }

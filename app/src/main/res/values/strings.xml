@@ -5,4 +5,5 @@
     <string name="google_sign_in_logo">google_sign_in_logo</string>
     <string name="sign_in_anonymously">Sign In Anonymously</string>
     <string name="sign_in_with_google">Sign In With Google</string>
+    <string name="create_sdp_offer_btn">create_sdp_offer_btn</string>
 </resources>

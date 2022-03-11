@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class SharedViewModel: ViewModel() {
+class SignInViewModel: ViewModel() {
     var user: User? = null
     private val _isUserNULL: MutableStateFlow<Boolean> = MutableStateFlow(true)
     val isUserNULL: StateFlow<Boolean> = _isUserNULL
