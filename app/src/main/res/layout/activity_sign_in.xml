@@ -63,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/anonymous_sign_in_btn"
         android:foregroundGravity="center"
-        android:layout_marginHorizontal="80dp"
+        android:layout_marginHorizontal="60dp"
         android:layout_marginVertical="12dp"
         android:minWidth="64dp"
         android:background="@drawable/back">
@@ -71,16 +71,16 @@
         <ImageView
             android:contentDescription="@string/google_sign_in_logo"
             android:id="@+id/google_logo"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="12dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginHorizontal="14dp"
             android:src="@drawable/ic_google_logo"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="9dp"
@@ -101,7 +101,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:foregroundGravity="center"
-        android:layout_marginHorizontal="80dp"
+        android:layout_marginHorizontal="60dp"
         android:layout_marginVertical="12dp"
         android:minWidth="64dp"
         android:background="@drawable/back">
@@ -109,16 +109,16 @@
         <ImageView
             android:contentDescription="@string/anonymous_sign_in_logo"
             android:id="@+id/anonymous_logo"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_marginStart="12dp"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_marginHorizontal="14dp"
             android:src="@drawable/ic_incognito"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <TextView
-            android:textSize="16sp"
+            android:textSize="18sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="9dp"

@@ -10,10 +10,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.lifecycle.lifecycleScope
+import com.example.webrtcmeet.Constants.ALL_USERS_COLLECTION
 import com.example.webrtcmeet.Constants.DISPLAY_NAME
 import com.example.webrtcmeet.Constants.ERROR_TEXT
 import com.example.webrtcmeet.Constants.PHOTO_URL
 import com.example.webrtcmeet.Constants.UID
+import com.example.webrtcmeet.models.User
 import com.example.webrtcmeet.viewmodels.SignInViewModel
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -25,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -99,6 +102,7 @@ class SignInActivity : AppCompatActivity() {
     private fun updateUI(firebaseUser: FirebaseUser?) {
         if (firebaseUser != null) {
             viewModel.addUser(firebaseUser)
+            FirebaseFirestore.getInstance().collection(ALL_USERS_COLLECTION).document(firebaseUser.uid).set(User(firebaseUser.uid,firebaseUser.photoUrl.toString(),firebaseUser.displayName!!))
             launchMainActivity()
         } else {
             loadingCard.visibility = View.GONE

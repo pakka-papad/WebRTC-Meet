@@ -3,7 +3,6 @@ package com.example.webrtcmeet.viewmodels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.webrtcmeet.RetrofitInstance
-import com.example.webrtcmeet.daos.UserDao
 import com.example.webrtcmeet.models.User
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,7 +13,6 @@ class SignInViewModel: ViewModel() {
     var user: User? = null
     private val _isUserNULL: MutableStateFlow<Boolean> = MutableStateFlow(true)
     val isUserNULL: StateFlow<Boolean> = _isUserNULL
-    private val userDao = UserDao()
     fun addUser(firebaseUser: FirebaseUser){
         user = User(
             uid = firebaseUser.uid,
@@ -22,7 +20,6 @@ class SignInViewModel: ViewModel() {
             displayName = firebaseUser.displayName.toString()
         )
         if(user != null) {
-            userDao.addUser(user!!)
             _isUserNULL.value = false
         }
     }

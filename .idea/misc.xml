@@ -4,8 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Sumit/AndroidStudioProjects/WebRTCMeet/app/src/main/res/drawable/back.xml" value="0.173" />
+        <entry key="..\:/Users/Sumit/AndroidStudioProjects/WebRTCMeet/app/src/main/res/layout/activity_call.xml" value="0.3333333333333333" />
         <entry key="..\:/Users/Sumit/AndroidStudioProjects/WebRTCMeet/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Sumit/AndroidStudioProjects/WebRTCMeet/app/src/main/res/layout/activity_sign_in.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/Sumit/AndroidStudioProjects/WebRTCMeet/app/src/main/res/layout/call_card.xml" value="0.3333333333333333" />
       </map>
     </option>
   </component>

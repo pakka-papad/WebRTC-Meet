@@ -6,4 +6,7 @@
     <string name="sign_in_anonymously">Sign In Anonymously</string>
     <string name="sign_in_with_google">Sign In With Google</string>
     <string name="create_sdp_offer_btn">create_sdp_offer_btn</string>
+    <string name="connect">CONNECT</string>
+    <string name="test_user">Test User</string>
+    <string name="profile_picture">profile_picture</string>
 </resources>
